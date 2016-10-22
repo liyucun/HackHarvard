@@ -51,28 +51,6 @@ public class Camera extends AppCompatActivity {
 
                 dispatchTakePictureIntent();
 
-//                Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-//                // Ensure that there's a camera activity to handle the intent
-//                if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-//                    // Create the File where the photo should go
-//                    File photoFile = null;
-//                    try {
-//                        photoFile = createImageFile();
-//                    } catch (IOException ex) {
-//                        // Error occurred while creating the File
-//                        Log.e("Camera: ", "Unable to write:" + ex.getMessage());
-//                    }
-//                    // Continue only if the File was successfully created
-//                    if (photoFile != null) {
-//                        Uri photoURI = FileProvider.getUriForFile(,
-//                                "com.example.android.fileprovider",
-//                                photoFile);
-//                        Uri uriSavedImage = Uri.fromFile(photoFile);
-//                        takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, uriSavedImage);
-//                        startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
-//                    }
-//                }
-
 
             }
         });
@@ -101,6 +79,8 @@ public class Camera extends AppCompatActivity {
         }
     }
 
+    // TODO: Fix this method in order to save thumbnails, not sure why it isn't working. Ideally we
+    // thumbnails for the different playlists.
 //    @Override
 //    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 //        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
