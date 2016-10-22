@@ -9,7 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Toast;
 
-public class camera extends AppCompatActivity {
+public class Camera extends AppCompatActivity {
 
 
 
@@ -24,7 +24,7 @@ public class camera extends AppCompatActivity {
 
 
 
-        FloatingActionButton cameraButton = (FloatingActionButton) findViewById(R.id.content_camera);
+        FloatingActionButton cameraButton = (FloatingActionButton) findViewById(R.id.camera_button);
         cameraButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -33,8 +33,7 @@ public class camera extends AppCompatActivity {
                 int duration = Toast.LENGTH_LONG;
                 Toast toasty = Toast.makeText(context, text, duration);
                 toasty.show();
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+
             }
         });
     }

@@ -28,6 +28,9 @@ public class MainActivity extends Activity implements
     // Can be any integer
     private static final int REQUEST_CODE = 1337;
 
+    private static String auth_token;
+    private static String session_id;
+
     private Player mPlayer;
 
     @Override
@@ -100,6 +103,9 @@ public class MainActivity extends Activity implements
     @Override
     public void onLoggedIn() {
         Log.d("MainActivity", "User logged in");
+
+        Intent cameraIntent = new Intent(getApplicationContext(), Camera.class);
+        startActivityForResult(cameraIntent, 0);
 
         mPlayer.playUri(null, "spotify:track:2TpxZ7JUBn3uw46aR7qd6V", 0, 0);
     }
