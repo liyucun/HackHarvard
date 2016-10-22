@@ -142,7 +142,7 @@ public class CameraActivity extends AppCompatActivity {
 
             for (File file : listFile) {
 
-                thumbnails.add(ThumbnailUtils.extractThumbnail(BitmapFactory.decodeFile(file.getAbsolutePath()), 10, 10));
+                thumbnails.add(ThumbnailUtils.extractThumbnail(BitmapFactory.decodeFile(file.getAbsolutePath()), 90, 90));
             }
         }
 
