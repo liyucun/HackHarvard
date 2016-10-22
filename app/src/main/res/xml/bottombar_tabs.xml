@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tabs xmlns:android="http://schemas.android.com/apk/res/android">
+    <tab
+        icon="@drawable/ic_smile"
+        id="@+id/tab_smile" />
+    <tab
+        icon="@drawable/ic_camera"
+        id="@+id/tab_camera" />
+    <tab
+        icon="@drawable/ic_recommendation"
+        id="@+id/tab_recommendation" />
+</tabs>
