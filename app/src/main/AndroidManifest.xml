@@ -43,8 +43,8 @@
             android:name="com.spotify.sdk.android.authentication.LoginActivity"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
-            android:name=".Camera"
-            android:label="@string/title_activity_camera"
+            android:name=".CameraActivity"
+            android:label="Gallery"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

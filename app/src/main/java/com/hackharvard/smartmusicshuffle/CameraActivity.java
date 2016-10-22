@@ -1,20 +1,21 @@
 package com.hackharvard.smartmusicshuffle;
 
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.media.ThumbnailUtils;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
+import android.widget.AdapterView;
+import android.widget.GridView;
 import android.widget.Toast;
 
 import java.io.File;
@@ -23,13 +24,14 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Camera extends AppCompatActivity {
+import static com.hackharvard.smartmusicshuffle.ImageAdapter.thumbnails;
+
+public class CameraActivity extends AppCompatActivity {
 
     static final int REQUEST_IMAGE_CAPTURE = 1;
 
-    private ImageView mImageView;
-
-    private ArrayList<ImageView> imageViews = new ArrayList<>();
+//    private ImageView mImageView;
+//    private ArrayList<ImageView> imageViews = new ArrayList<>();
 
     String mCurrentPhotoPath;
 
@@ -40,12 +42,27 @@ public class Camera extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        populateThumbnails();
+
+        GridView gridview = (GridView) findViewById(R.id.gridview);
+        gridview.setAdapter(new ImageAdapter(this));
+
+        gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View v,
+                                    int position, long id) {
+                Toast.makeText(CameraActivity.this, "" + position,
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+
         FloatingActionButton cameraButton = (FloatingActionButton) findViewById(R.id.camera_button);
         cameraButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // Toast Message, initializing the camera.
-                CharSequence text = "Initializing Camera...";
+                CharSequence text = "Initializing CameraActivity...";
                 Toast toasty = Toast.makeText(getApplicationContext(), text, Toast.LENGTH_LONG);
                 toasty.show();
 
@@ -66,7 +83,7 @@ public class Camera extends AppCompatActivity {
                 photoFile = createImageFile();
             } catch (IOException ex) {
                 // Error occurred while creating the File
-                Log.e("Camera: ", "Unable to write:" + ex.getMessage());
+                Log.e("CameraActivity: ", "Unable to write:" + ex.getMessage());
             }
             // Continue only if the File was successfully created
             if (photoFile != null) {
@@ -108,4 +125,27 @@ public class Camera extends AppCompatActivity {
         return image;
     }
 
+
+    public void populateThumbnails() {
+
+        File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+
+        ArrayList<String> f = new ArrayList<String>();// list of file paths
+        File[] listFile;
+
+        thumbnails.clear();
+
+        if (storageDir.isDirectory()) {
+
+            listFile = storageDir.listFiles();
+
+
+            for (File file : listFile) {
+
+                thumbnails.add(ThumbnailUtils.extractThumbnail(BitmapFactory.decodeFile(file.getAbsolutePath()), 10, 10));
+            }
+        }
+
+
+    }
 }
