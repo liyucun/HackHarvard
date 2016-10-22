@@ -1,17 +1,32 @@
 package com.hackharvard.smartmusicshuffle;
 
+import android.os.StrictMode;
+import android.util.Log;
+
 import com.spotify.sdk.android.player.SpotifyPlayer;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.lang.reflect.Array;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
+import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -19,7 +34,7 @@ import java.util.regex.Pattern;
  * Created by danielchan on 22/10/16.
  */
 
-public class Spotify extends MainActivity{
+public class SpottyFi extends MainActivity{
 
 
     // URIs for the various playlists. Although it shouldn't be hardcoded.
@@ -65,9 +80,6 @@ public class Spotify extends MainActivity{
     ArrayList<String> neutralURI = new ArrayList<>();
 
 
-    public void generateHappyPlaylists(int size) {
-
-    }
 
 
     /*
@@ -78,12 +90,17 @@ public class Spotify extends MainActivity{
     4 is fear
     5 is contempt
     6 is anger
+    7 is surprise
      */
     public static ArrayList<String> selectRandom(int amount, int genre) {
 
         Random r = new Random();
 
         ArrayList<String> tempArray = new ArrayList<>();
+
+        absorbURI(genre);
+
+        System.out.println(uriMapper.get(genre).size());
 
         for(int i = 0; i < amount; i++) {
             int randomInt = r.nextInt(uriMapper.get(genre).size());
@@ -108,6 +125,7 @@ public class Spotify extends MainActivity{
         uriMapper.put(4, fearURI);
         uriMapper.put(5, contemptURI);
         uriMapper.put(6, angerURI);
+        uriMapper.put(7, surpriseURI);
 
         Pattern patternObject = Pattern.compile(extractURI);
 
@@ -160,33 +178,33 @@ public class Spotify extends MainActivity{
      * @return Returns the raw content of the HTML file.
      */
     public static String getHTML(String urlString) {
-        // create object to store html source text as it is being collected
-        StringBuilder html = new StringBuilder();
-        // open connection to given url
-        URL url = null;
-        try {
-            url = new File(urlString).toURI().toURL();
-        } catch (MalformedURLException e) {
 
-        }
-        // create BufferedReader to buffer the given url's HTML source
-        try {
-            BufferedReader htmlBR =
-                    new BufferedReader(new InputStreamReader(url.openStream()));
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 
-            String line;
-            // read each line of HTML code and store in StringBuilder
-            while ((line = htmlBR.readLine()) != null) {
-                html.append(line);
+        StrictMode.setThreadPolicy(policy);
+
+        String html = "";
+        StringBuilder str = new StringBuilder();
+
+
+        try {
+            HttpClient client = new DefaultHttpClient();
+            HttpGet request = new HttpGet(urlString);
+            HttpResponse response = client.execute(request);
+
+            InputStream in = response.getEntity().getContent();
+            BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+            String line = null;
+            while ((line = reader.readLine()) != null) {
+                str.append(line);
             }
-            htmlBR.close();
+            in.close();
         } catch (IOException e) {
-            // Error handling for when the file doesn't exist.
-            System.out.println(urlString + " does not exist.");
+            Log.e("Error:", e.getMessage());
         }
+        html = str.toString();
 
-        // convert StringBuilder into a String and return it
-        return html.toString();
+        return html;
     }
 
 
