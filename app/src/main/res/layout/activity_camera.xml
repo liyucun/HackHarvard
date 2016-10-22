@@ -31,16 +31,18 @@
         android:layout_margin="@dimen/fab_margin"
         app:srcCompat="@android:drawable/ic_menu_camera" />
 
-    <GridView xmlns:android="http://schemas.android.com/apk/res/android"
+    <GridView
         android:id="@+id/gridview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="593dp"
         android:columnWidth="90dp"
-        android:numColumns="auto_fit"
         android:verticalSpacing="10dp"
         android:horizontalSpacing="10dp"
         android:stretchMode="columnWidth"
-        android:gravity="center"
-        />
+        android:numColumns="3"
+        android:gravity="bottom"
+        tools:gravity="bottom"
+        android:elevation="13dp"
+        android:paddingTop="60dp" />
 
 </android.support.design.widget.CoordinatorLayout>

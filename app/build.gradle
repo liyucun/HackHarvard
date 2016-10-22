@@ -4,6 +4,7 @@ apply plugin: 'android-apt'
 android {
     compileSdkVersion 24
     buildToolsVersion "24.0.2"
+    useLibrary 'org.apache.http.legacy'
     defaultConfig {
         applicationId "com.hackharvard.smartmusicshuffle"
         minSdkVersion 19
@@ -37,10 +38,13 @@ dependencies {
 
 
     compile 'com.android.support:appcompat-v7:24.2.1'
+    compile 'org.jsoup:jsoup:1.9.2'
+
     compile 'com.spotify.sdk:spotify-auth:beta23-noconnect-2.20b@aar'
     compile 'com.spotify.sdk:spotify-player:beta23-noconnect-2.20b@aar'
     compile 'com.squareup.retrofit2:retrofit:2.1.0'
     compile 'com.squareup.okhttp3:okhttp:3.4.1'
+    compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.android.support:design:24.2.1'
     compile 'com.squareup.retrofit2:converter-gson:2.1.0'
     compile 'com.jakewharton:butterknife:8.4.0'

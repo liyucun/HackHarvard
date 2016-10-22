@@ -42,7 +42,6 @@ public class CameraActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        populateThumbnails();
 
         GridView gridview = (GridView) findViewById(R.id.gridview);
         gridview.setAdapter(new ImageAdapter(this));
@@ -91,6 +90,7 @@ public class CameraActivity extends AppCompatActivity {
                         "com.hackharvard.smartmusicshuffle",
                         photoFile);
                 takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
+                populateThumbnails();
                 startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
             }
         }
@@ -142,7 +142,7 @@ public class CameraActivity extends AppCompatActivity {
 
             for (File file : listFile) {
 
-                thumbnails.add(ThumbnailUtils.extractThumbnail(BitmapFactory.decodeFile(file.getAbsolutePath()), 10, 10));
+                thumbnails.add(ThumbnailUtils.extractThumbnail(BitmapFactory.decodeFile(file.getAbsolutePath()), 90, 90));
             }
         }
 
