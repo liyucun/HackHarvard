@@ -1,7 +1,9 @@
 package com.hackharvard.smartmusicshuffle;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -11,7 +13,7 @@ import android.widget.Toast;
 
 public class Camera extends AppCompatActivity {
 
-
+    static final int REQUEST_IMAGE_CAPTURE = 1;
 
 
     @Override
@@ -24,15 +26,22 @@ public class Camera extends AppCompatActivity {
 
 
 
+
+
         FloatingActionButton cameraButton = (FloatingActionButton) findViewById(R.id.camera_button);
         cameraButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Context context = getApplicationContext();
+                // Toast Message, initializing the camera.
                 CharSequence text = "Initializing Camera...";
-                int duration = Toast.LENGTH_LONG;
-                Toast toasty = Toast.makeText(context, text, duration);
+                Toast toasty = Toast.makeText(getApplicationContext(), text, Toast.LENGTH_LONG);
                 toasty.show();
+
+                Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+                    startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+                }
+
 
             }
         });
