@@ -31,6 +31,30 @@ public class MainActivity extends Activity implements
     private static String auth_token;
     private static String session_id;
 
+    public static String getClientId() {
+        return CLIENT_ID;
+    }
+
+    public static String getRedirectUri() {
+        return REDIRECT_URI;
+    }
+
+    public static int getRequestCode() {
+        return REQUEST_CODE;
+    }
+
+    public static String getAuth_token() {
+        return auth_token;
+    }
+
+    public static String getSession_id() {
+        return session_id;
+    }
+
+    public Player getmPlayer() {
+        return mPlayer;
+    }
+
     private Player mPlayer;
 
     @Override
