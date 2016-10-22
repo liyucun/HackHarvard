@@ -55,7 +55,7 @@ public class MainActivity extends Activity implements
         return mPlayer;
     }
 
-    private Player mPlayer;
+    public Player mPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -131,7 +131,7 @@ public class MainActivity extends Activity implements
         Intent cameraIntent = new Intent(getApplicationContext(), CameraActivity.class);
         startActivityForResult(cameraIntent, 0);
 
-        //mPlayer.playUri(null, "spotify:track:2TpxZ7JUBn3uw46aR7qd6V", 0, 0);
+        mPlayer.playUri(null, "spotify:user:spotify:playlist:65V6djkcVRyOStLd8nza8E", 0, 0);
     }
 
     @Override
