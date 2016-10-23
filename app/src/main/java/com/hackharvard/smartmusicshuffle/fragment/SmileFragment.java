@@ -22,6 +22,7 @@ import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 import com.github.mikephil.charting.interfaces.datasets.IRadarDataSet;
 import com.hackharvard.smartmusicshuffle.R;
 import com.hackharvard.smartmusicshuffle.activity.HomeActivity;
+import com.microsoft.projectoxford.emotion.contract.Scores;
 
 import java.util.ArrayList;
 
@@ -151,19 +152,39 @@ public class SmileFragment extends Fragment {
         int cnt = 8;
 
         ArrayList<RadarEntry> entries1 = new ArrayList<RadarEntry>();
-        ArrayList<RadarEntry> entries2 = new ArrayList<RadarEntry>();
+
+        Scores scores = ((HomeActivity) getActivity()).scores;
 
         // NOTE: The order of the entries when being added to the entries array determines their position around the center of
         // the chart.
         for (int i = 0; i < cnt; i++) {
-            float val1 = (float) (Math.random() * mult) + min;
-            entries1.add(new RadarEntry(val1));
 
-            float val2 = (float) (Math.random() * mult) + min;
-            entries2.add(new RadarEntry(val2));
+            Double value = Math.random();
+            if (scores != null) {
+                if (i == 0) {
+                    value = scores.happiness;
+                } else if (i == 2) {
+                    value = scores.contempt;
+                } else if (i == 3) {
+                    value = scores.fear;
+                } else if (i == 4) {
+                    value = scores.disgust;
+                } else if (i == 5) {
+                    value = scores.anger;
+                } else if (i == 6) {
+                    value = scores.sadness;
+                } else if (i == 7) {
+                    value = scores.neutral;
+                } else if (i == 8) {
+                    value = scores.surprise;
+                }
+            }
+
+            float val1 = (float) (value * mult) + min;
+            entries1.add(new RadarEntry(val1));
         }
 
-        RadarDataSet set1 = new RadarDataSet(entries1, "2 Photos Ago");
+        RadarDataSet set1 = new RadarDataSet(entries1, "Last Photo Recognition Scores");
         set1.setColor(Color.rgb(103, 110, 129));
         set1.setFillColor(Color.rgb(103, 110, 129));
         set1.setDrawFilled(true);
@@ -172,18 +193,8 @@ public class SmileFragment extends Fragment {
         set1.setDrawHighlightCircleEnabled(true);
         set1.setDrawHighlightIndicators(false);
 
-        RadarDataSet set2 = new RadarDataSet(entries2, "Last Photo");
-        set2.setColor(Color.rgb(121, 162, 175));
-        set2.setFillColor(Color.rgb(121, 162, 175));
-        set2.setDrawFilled(true);
-        set2.setFillAlpha(180);
-        set2.setLineWidth(2f);
-        set2.setDrawHighlightCircleEnabled(true);
-        set2.setDrawHighlightIndicators(false);
-
         ArrayList<IRadarDataSet> sets = new ArrayList<IRadarDataSet>();
         sets.add(set1);
-        sets.add(set2);
 
         RadarData data = new RadarData(sets);
         data.setValueTextSize(8f);
