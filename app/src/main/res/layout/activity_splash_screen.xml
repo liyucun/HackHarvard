@@ -48,15 +48,6 @@
             android:text="sign in"
             android:textColor="@android:color/white" />
 
-        <Button
-            android:id="@+id/sign_up"
-            android:layout_width="300dp"
-            android:layout_height="40dp"
-            android:layout_marginBottom="20dp"
-            android:background="#0f1039"
-            android:text="sign up"
-            android:textColor="@android:color/white" />
-
 
     </LinearLayout>
 
