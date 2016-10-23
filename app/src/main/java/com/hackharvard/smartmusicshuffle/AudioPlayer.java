@@ -38,7 +38,7 @@ import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Transformation;
 
 /**
- * Created by danielchan on 22/10/16.
+ * Boilerplate code from Spotify's example.
  */
 
 public class AudioPlayer extends Activity implements
@@ -95,6 +95,7 @@ public class AudioPlayer extends Activity implements
             R.id.toggle_shuffle_button,
             R.id.toggle_repeat_button,
     };
+
     public static final String TAG = "SmartMusicShuffle";
 
     //  _____ _      _     _

@@ -1,13 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.hackharvard.smartmusicshuffle.MainActivity">
+    android:layout_height="match_parent">
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:srcCompat="@drawable/background"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/imageView5"
+        android:layout_alignParentTop="true" />
+
+    <ImageView
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/text"
+        android:id="@+id/imageView6"
+        android:layout_marginTop="267dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_width="200dp" />
+
+    <ImageButton
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/signin"
+        android:id="@+id/imageView9"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        android:cropToPadding="false"
+
+        android:layout_marginBottom="50dp"
+        android:layout_width="325dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
 
 </RelativeLayout>

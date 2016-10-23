@@ -34,7 +34,7 @@ import java.util.regex.Pattern;
  * Created by danielchan on 22/10/16.
  */
 
-public class SpottyFi extends MainActivity{
+public class SpottyFi extends AudioPlayer {
 
 
     // URIs for the various playlists. Although it shouldn't be hardcoded.
@@ -59,7 +59,7 @@ public class SpottyFi extends MainActivity{
 
 
     private static String happy_moodBooster = "spotify:user:spotify:playlist:6uTuhSs7qiEPfCI3QDHXsL";
-    private static String embed_moodBoosterElements = "https://embed.spotify.com/?uri=spotify%3Auser%3Aspotify%3Aplaylist%3A6uTuhSs7qiEPfCI3QDHXsL";
+    private static String embed_moodBoosterElements = "https://open.spotify.com/embed?uri=spotify%3Auser%3Aspotify%3Aplaylist%3A6uTuhSs7qiEPfCI3QDHXsL";
     private static String html_moodBooster;
 
     private static final String extractURI = "data-uri=\"(.*?)\"";
@@ -78,6 +78,11 @@ public class SpottyFi extends MainActivity{
 
     // I think for neutral we can pick out one random song from each of the other.
     ArrayList<String> neutralURI = new ArrayList<>();
+
+
+    public void generateQueue() {
+
+    }
 
 
 

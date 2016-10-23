@@ -15,9 +15,10 @@ public class MainActivity extends Activity
         Intent cameraIntent = new Intent(getApplicationContext(), AudioPlayer.class);
         startActivityForResult(cameraIntent, 0);
 
-
-
     }
+
+
+
 
 //    @Override
 //    public void onLoggedIn() {
