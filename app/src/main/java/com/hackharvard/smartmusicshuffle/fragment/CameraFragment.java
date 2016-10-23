@@ -193,6 +193,7 @@ public class CameraFragment extends Fragment {
                         Log.d("Recognizition result", recognizeResult.scores.toString());
 
                         final Scores scores = recognizeResult.scores;
+                        ((HomeActivity) getActivity()).scores = scores;
                         final Double STANDARD = 0.5;
                         List<String> songs;
                         if(scores.fear > STANDARD) {

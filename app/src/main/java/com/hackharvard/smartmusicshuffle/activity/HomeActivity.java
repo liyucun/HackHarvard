@@ -18,6 +18,7 @@ import com.hackharvard.smartmusicshuffle.R;
 import com.hackharvard.smartmusicshuffle.fragment.CameraFragment;
 import com.hackharvard.smartmusicshuffle.fragment.RecommendationFragment;
 import com.hackharvard.smartmusicshuffle.fragment.SmileFragment;
+import com.microsoft.projectoxford.emotion.contract.Scores;
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnTabSelectListener;
 import com.spotify.sdk.android.authentication.AuthenticationClient;
@@ -42,6 +43,8 @@ public class HomeActivity extends AppCompatActivity implements SmileFragment.OnS
     BottomBar bottomBar;
 
     public SpotifyPlayer mPlayer;
+
+    public Scores scores;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
