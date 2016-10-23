@@ -3,6 +3,7 @@ package com.hackharvard.smartmusicshuffle.fragment;
 import android.Manifest;
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -24,10 +25,12 @@ import com.microsoft.projectoxford.emotion.contract.RecognizeResult;
 import com.microsoft.projectoxford.emotion.contract.Scores;
 import com.microsoft.projectoxford.emotion.rest.EmotionServiceException;
 import com.spotify.sdk.android.player.Error;
+import com.spotify.sdk.android.player.Metadata;
 import com.spotify.sdk.android.player.Player;
 import com.spotify.sdk.android.player.Spotify;
 import com.spotify.sdk.android.player.SpotifyPlayer;
 import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Transformation;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import java.io.ByteArrayInputStream;
@@ -211,6 +214,30 @@ public class CameraFragment extends Fragment {
                         for (String uri : songs) {
                             spotifyPlayer.queue(((HomeActivity) getActivity()).mOperationCallback, uri);
                         }
+
+//                        Metadata mMetadata = spotifyPlayer.getMetadata();
+//
+//
+//                        Picasso.with((HomeActivity) getActivity())
+//                                .load(mMetadata.currentTrack.albumCoverWebUrl)
+//                                .transform(new Transformation() {
+//                                    @Override
+//                                    public Bitmap transform(Bitmap source) {
+//                                        // really ugly darkening trick
+//                                        final Bitmap copy = source.copy(source.getConfig(), true);
+//                                        source.recycle();
+//                                        final Canvas canvas = new Canvas(copy);
+//                                        canvas.drawColor(0xbb000000);
+//                                        return copy;
+//                                    }
+//
+//                                    @Override
+//                                    public String key() {
+//                                        return "darken";
+//                                    }
+//                                })
+//                                .into(((HomeActivity) getActivity()).coverArtView1);
+
                     }
                 }
             }

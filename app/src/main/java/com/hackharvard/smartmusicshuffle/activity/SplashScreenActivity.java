@@ -29,10 +29,6 @@ public class SplashScreenActivity extends AppCompatActivity {
         navigateToSignIn();
     }
 
-    @OnClick(R.id.sign_up)
-    public void signup() {
-        navigateToSignIn();
-    }
 
     private void navigateToSignIn() {
         Intent intent = new Intent(this, SignInActivity.class);
