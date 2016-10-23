@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 
 import com.hackharvard.smartmusicshuffle.R;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class RecommendationFragment extends Fragment {
