@@ -209,6 +209,8 @@ public class CameraFragment extends Fragment {
                             songs = SpottyFi.selectRandom(10, 1);
                         }
 
+                        System.out.println(songs.get(0));
+
                         SpotifyPlayer spotifyPlayer = ((HomeActivity) getActivity()).mPlayer;
                         spotifyPlayer.playUri(((HomeActivity) getActivity()).mOperationCallback, songs.get(0), 0, 0);
                         for (String uri : songs) {

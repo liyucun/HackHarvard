@@ -34,7 +34,7 @@ import java.util.regex.Pattern;
  * Created by danielchan on 22/10/16.
  */
 
-public class SpottyFi extends AudioPlayer {
+public class SpottyFi {
 
 
     // URIs for the various playlists. Although it shouldn't be hardcoded.
@@ -159,7 +159,7 @@ public class SpottyFi extends AudioPlayer {
         } else if (genre == 2) { // Depressed
             Matcher matcher = patternObject.matcher(html_lifeSucks);
             while (matcher.find()) {
-                happySongURI.add(matcher.group(1));
+                depressedURI.add(matcher.group(1));
             }
         }
     }

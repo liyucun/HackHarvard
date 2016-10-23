@@ -20,7 +20,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="5dp"
             android:orientation="vertical">
 
             <LinearLayout
@@ -35,7 +34,7 @@
                     android:layout_weight="1"
                     android:paddingRight="5dp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/background" />
+                    android:src="@drawable/selfie4" />
 
                 <ImageView
                     android:layout_width="0dp"
@@ -44,35 +43,10 @@
 
                     android:layout_weight="1"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/background" />
+                    android:src="@drawable/selfie1" />
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="225dp"
-                android:paddingBottom="5dp"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:paddingRight="5dp"
-
-                    android:layout_weight="1"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/background" />
-
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:paddingLeft="5dp"
-
-                    android:layout_weight="1"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/background" />
-
-            </LinearLayout>
 
         </LinearLayout>
 

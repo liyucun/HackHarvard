@@ -46,11 +46,20 @@
     </android.support.design.widget.TextInputLayout>
 
     <Button
+        android:id="@+id/sign_in_normal"
+        android:layout_marginBottom="20dp"
+        android:background="#f6b232"
+        android:text="sign in"
+        android:textColor="@android:color/white"
+        android:layout_width="225dp"
+        android:layout_height="37.5dp" />
+
+    <Button
         android:id="@+id/sign_in"
-        android:layout_width="match_parent"
         android:background="@drawable/spotifylogin"
         android:layout_marginBottom="20dp"
         android:textColor="@android:color/white"
-        android:layout_height="70dp" />
+        android:layout_width="225dp"
+        android:layout_height="37.5dp" />
 
 </LinearLayout>

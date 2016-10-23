@@ -14,7 +14,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.hackharvard.smartmusicshuffle.AudioPlayer;
 import com.hackharvard.smartmusicshuffle.R;
 import com.hackharvard.smartmusicshuffle.fragment.CameraFragment;
 import com.hackharvard.smartmusicshuffle.fragment.RecommendationFragment;
@@ -47,14 +46,6 @@ public class HomeActivity extends AppCompatActivity implements SmileFragment.OnS
 
     public Scores scores;
 
-//    public final ImageView coverArtView1 = (ImageView) findViewById(R.id.album1);
-//    public final ImageView coverArtView2 = (ImageView) findViewById(R.id.album2);
-//    public final ImageView coverArtView3 = (ImageView) findViewById(R.id.album3);
-//    public final ImageView coverArtView4 = (ImageView) findViewById(R.id.album4);
-//    public final ImageView coverArtView5 = (ImageView) findViewById(R.id.album5);
-//    public final ImageView coverArtView6 = (ImageView) findViewById(R.id.album6);
-//    public final ImageView coverArtView7 = (ImageView) findViewById(R.id.album7);
-//    public final ImageView coverArtView8 = (ImageView) findViewById(R.id.album8);
 
 
 
