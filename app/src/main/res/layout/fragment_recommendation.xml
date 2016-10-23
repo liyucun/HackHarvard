@@ -4,10 +4,24 @@
     android:layout_height="match_parent"
     tools:context="com.hackharvard.smartmusicshuffle.fragment.RecommendationFragment">
 
-    <com.felipecsl.asymmetricgridview.library.widget.AsymmetricGridView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/listView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/background"/>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:scaleType="centerCrop"
+            android:src="@drawable/background"/>
+
+    </LinearLayout>
 
 </FrameLayout>

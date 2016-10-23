@@ -15,17 +15,25 @@ import android.widget.ImageView;
 
 import com.google.gson.Gson;
 import com.hackharvard.smartmusicshuffle.R;
+import com.hackharvard.smartmusicshuffle.SpottyFi;
+import com.hackharvard.smartmusicshuffle.activity.HomeActivity;
 import com.hackharvard.smartmusicshuffle.helper.ImageHelper;
 import com.microsoft.projectoxford.emotion.EmotionServiceClient;
 import com.microsoft.projectoxford.emotion.EmotionServiceRestClient;
 import com.microsoft.projectoxford.emotion.contract.RecognizeResult;
+import com.microsoft.projectoxford.emotion.contract.Scores;
 import com.microsoft.projectoxford.emotion.rest.EmotionServiceException;
+import com.spotify.sdk.android.player.Error;
+import com.spotify.sdk.android.player.Player;
+import com.spotify.sdk.android.player.Spotify;
+import com.spotify.sdk.android.player.SpotifyPlayer;
 import com.squareup.picasso.Picasso;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.LinkedList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -183,6 +191,25 @@ public class CameraFragment extends Fragment {
                 } else {
                     for (RecognizeResult recognizeResult : result) {
                         Log.d("Recognizition result", recognizeResult.scores.toString());
+
+                        final Scores scores = recognizeResult.scores;
+                        final Double STANDARD = 0.5;
+                        List<String> songs;
+                        if(scores.fear > STANDARD) {
+                            songs = SpottyFi.selectRandom(10, 0);
+                        } else if (scores.happiness > STANDARD) {
+                            songs = SpottyFi.selectRandom(10, 1);
+                        } else if (scores.sadness > STANDARD) {
+                            songs = SpottyFi.selectRandom(10, 2);
+                        } else {
+                            songs = SpottyFi.selectRandom(10, 1);
+                        }
+
+                        SpotifyPlayer spotifyPlayer = ((HomeActivity) getActivity()).mPlayer;
+                        spotifyPlayer.playUri(((HomeActivity) getActivity()).mOperationCallback, songs.get(0), 0, 0);
+                        for (String uri : songs) {
+                            spotifyPlayer.queue(((HomeActivity) getActivity()).mOperationCallback, uri);
+                        }
                     }
                 }
             }
